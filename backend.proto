@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package pbbackend;
+
+service Backend {
+    rpc Store (Element) returns (Error) {};
+    rpc Fetch (ElementID) returns (Element) {};
+    rpc List (Pagination) returns (Elements) {};
+}
+
+message Pagination {
+    int32 NumberOfItem = 1;
+}
+
+message Elements {
+    Error error = 1;
+    repeated Element element = 2;
+}
+
+
+message Element {
+    Error error = 1;
+    ElementID ID = 2;
+    string comment = 3;
+    bytes body = 5;
+    string Owner = 6;
+}
+
+message ElementID {
+    string ID = 1;
+}
+
+message Error {
+    string err = 1;
+}
