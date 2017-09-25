@@ -3,8 +3,8 @@ syntax = "proto3";
 package pbbackend;
 
 service Backend {
-    rpc Store (Element) returns (Error) {};
-    rpc Fetch (ElementID) returns (Element) {};
+    rpc Store (stream Element) returns (Error) {};
+    rpc Fetch (ElementID) returns (stream Element) {};
     rpc List (Pagination) returns (Elements) {};
 }
 
